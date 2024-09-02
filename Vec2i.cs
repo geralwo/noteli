@@ -1,5 +1,5 @@
 
-namespace NoteCLI;
+namespace NoteLi;
 public struct Vec2i
 {
   public int x;

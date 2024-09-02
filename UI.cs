@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace NoteCLI.UI;
+namespace NoteLi.UI;
 
 public class Table
 {

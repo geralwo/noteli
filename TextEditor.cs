@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace NoteCLI;
+namespace NoteLi;
 
 public class TextEditor
 {

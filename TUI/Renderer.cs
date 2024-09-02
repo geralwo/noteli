@@ -1,4 +1,4 @@
-namespace NoteCLI.TUI;
+namespace NoteLi.TUI;
 
 public class Renderer()
 {
@@ -39,5 +39,6 @@ public class Renderer()
     {
       obj.Render();
     }
+    Console.ResetColor();
   }
 }

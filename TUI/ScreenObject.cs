@@ -1,4 +1,4 @@
-namespace NoteCLI.TUI;
+namespace NoteLi.TUI;
 
 public abstract class ScreenObject
 {

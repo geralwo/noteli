@@ -3,13 +3,13 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace NoteCLI.TUI;
+namespace NoteLi.TUI;
 
 public class Table : ScreenObject
 {
   public bool ShowHeaders = false;
   public Vec2i Size = Vec2i.ZERO;
-  private List<string> headers = [];
+  public List<string> Headers = [];
   public List<Row> Rows = new();
 
   public string FilePath;
@@ -26,10 +26,10 @@ public class Table : ScreenObject
   {
     foreach (var row in t.Rows)
     {
-      row.Values.Add(changeValue, row.Values[t.headers[index]]);
-      row.Values.Remove(t.headers[index]);
+      row.Values.Add(changeValue, row.Values[t.Headers[index]]);
+      row.Values.Remove(t.Headers[index]);
     }
-    t.headers[index] = changeValue;
+    t.Headers[index] = changeValue;
   }
 
   public Table(string filePath = "tmp.notedb")
@@ -47,13 +47,13 @@ public class Table : ScreenObject
   public override string ToString()
   {
     var sb = new StringBuilder();
-    if (headers.Count > 0)
+    if (Headers.Count > 0)
     {
       sb.Append('|');
-      for (int i = 0; i < headers.Count; i++)
+      for (int i = 0; i < Headers.Count; i++)
       {
-        sb.Append(headers[i]);
-        if (i < headers.Count - 1)
+        sb.Append(Headers[i]);
+        if (i < Headers.Count - 1)
         {
           sb.Append(',');
         }
@@ -78,16 +78,16 @@ public class Table : ScreenObject
       throw new Exception(":: FileManager returned no lines");
     if (_rows[0].StartsWith('|'))
     {
-      headers = _rows[0].Trim().Substring(1).Split(',').ToList();
+      Headers = _rows[0].Trim().Substring(1).Split(',').ToList();
       for (int i = 1; i < _rows.Length; i++)
       {
         var row_values = _rows[i].Split(',');
         var tr = new Table.Row();
         for (int j = 0; j < row_values.Length; j++)
         {
-          if (j < headers.Count)
+          if (j < Headers.Count)
           {
-            tr.Values.Add(headers[j], row_values[j]);
+            tr.Values.Add(Headers[j], row_values[j]);
           }
         }
         this.Add(tr);
@@ -105,14 +105,14 @@ public class Table : ScreenObject
     if (FilePath == "tmp.notedb")
       return;
     var sb = new StringBuilder();
-    if (headers.Count > 0)
+    if (Headers.Count > 0)
     {
       // add header line with prefix
       sb.Append('|');
-      for (int i = 0; i < headers.Count; i++)
+      for (int i = 0; i < Headers.Count; i++)
       {
-        sb.Append(headers[i]);
-        if (i < headers.Count - 1)
+        sb.Append(Headers[i]);
+        if (i < Headers.Count - 1)
         {
           sb.Append(',');
         }
@@ -140,13 +140,13 @@ public class Table : ScreenObject
   public override void Render()
   {
     var row_index = 0;
-    int[] rowWidths = new int[headers.Count];
+    int[] rowWidths = new int[Headers.Count];
     if (ShowHeaders)
     {
       Console.SetCursorPosition(this.Position.x, this.Position.y);
       Console.ForegroundColor = ConsoleColor.Black;
       Console.BackgroundColor = ConsoleColor.White;
-      foreach (var h in headers)
+      foreach (var h in Headers)
       {
         var render_value = h + '\t';
         rowWidths.Append(render_value.Length);
@@ -178,6 +178,13 @@ public class Table : ScreenObject
     public Row()
     {
     }
+  }
+
+  public struct RowValue
+  {
+    public int RowOffset;
+    public string Value;
+
   }
 }
 

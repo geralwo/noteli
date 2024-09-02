@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Timers;
-using NoteCLI.TUI;
-namespace NoteCLI
+using NoteLi.TUI;
+namespace NoteLi
 {
   internal class Program
   {
@@ -13,7 +13,8 @@ namespace NoteCLI
       while (true)
       {
         Renderer.Render();
-        Console.SetCursorPosition(0, Console.WindowHeight);
+        Console.SetCursorPosition(0, Console.WindowHeight - 1);
+        Console.Write("> ");
         var input = Console.ReadLine();
         if (input != null)
         {
@@ -31,6 +32,7 @@ namespace NoteCLI
           }
           else if (input.StartsWith("open:"))
           {
+            // open file to import as a table
             var newTable = Table.FromFile(input.Split(':')[1]);
             table = newTable;
             continue;
@@ -38,6 +40,7 @@ namespace NoteCLI
           else if (input.StartsWith("new:"))
           {
             table.SaveFile(input.Split(':')[1]);
+            continue;
           }
           else if (input.StartsWith("change:"))
           {
@@ -67,8 +70,9 @@ namespace NoteCLI
           {
             var _row = new Table.Row();
             long unixTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
+            _row.Values.Add("id", "%id%");
             _row.Values.Add("updated", unixTime.ToString());
-            _row.Values.Add("content", input);
+            _row.Values.Add("content", "hello world");
             table.Add(_row);
           }
         }
