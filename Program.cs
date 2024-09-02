@@ -72,7 +72,7 @@ namespace NoteLi
             long unixTime = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
             _row.Values.Add("id", "%id%");
             _row.Values.Add("updated", unixTime.ToString());
-            _row.Values.Add("content", "hello world");
+            _row.Values.Add("content", input);
             table.Add(_row);
           }
         }
