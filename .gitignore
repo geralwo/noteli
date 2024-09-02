@@ -1,0 +1,4 @@
+bin/
+obj/
+*.notedb
+*generated.sln
