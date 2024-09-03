@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace NoteLi.TUI;
 
 public abstract class ScreenObject

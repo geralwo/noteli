@@ -1,4 +1,8 @@
+using NoteLi;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -140,7 +144,7 @@ public class Table : ScreenObject
   public override void Render()
   {
     var row_index = 0;
-    int[] rowWidths = new int[Headers.Count];
+    List<int> rowWidths = new();
     if (ShowHeaders)
     {
       Console.SetCursorPosition(this.Position.x, this.Position.y);
@@ -149,7 +153,7 @@ public class Table : ScreenObject
       foreach (var h in Headers)
       {
         var render_value = h + '\t';
-        rowWidths.Append(render_value.Length);
+        rowWidths.Add(render_value.Length);
         Console.Write(render_value);
       }
     }

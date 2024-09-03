@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docli", "docli.csproj", "{B5853F6A-95C6-43AB-964E-44C093077768}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5853F6A-95C6-43AB-964E-44C093077768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5853F6A-95C6-43AB-964E-44C093077768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5853F6A-95C6-43AB-964E-44C093077768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5853F6A-95C6-43AB-964E-44C093077768}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {352854DE-8AE7-4CFC-A91C-E53F6212EB62}
+	EndGlobalSection
+EndGlobal
